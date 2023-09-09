@@ -54,7 +54,7 @@ bool consume(char op) {
 // それ以外の場合にはエラーを報告する。
 void expect(char op) {
   if (token->kind != TK_RESERVED || token->str[0] != op)
-    error_at(token->str, "'%c'ではありません");
+    error_at(token->str, "'%c'ではありません", op);
   token = token->next;
 }
 
@@ -104,6 +104,8 @@ Token* tokenize(char* p) {
       cur->val = strtol(p, &p, 10);
       continue;
     }
+
+    error_at(token->str, "トークナイズできません");
   }
 
   new_token(TK_EOF, cur, p);
