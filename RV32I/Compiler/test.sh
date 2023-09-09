@@ -9,11 +9,10 @@ assert() {
   echo "$input => ($result) doudesuka?"
 }
 
-assert 5+20-4 21
+assert " -+21-21+23-- " ?
 read var
-assert 18-10+4 12
+assert " 23 - 10 + 2-1" 14
 read var
-assert 30+12-20 22
-read var
+assert " 12 + 1-12+2 " 3
 
 echo OK
