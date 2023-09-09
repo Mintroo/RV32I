@@ -11,7 +11,7 @@ assert() {
 
 assert " -+21-21+23-- " ?
 read var
-assert " 23 - 10 + 2-1" 14
+assert " 23+ 10 2 + 2-1" 14
 read var
 assert " 12 + 1-12+2 " 3
 
