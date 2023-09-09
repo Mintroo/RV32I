@@ -17,3 +17,13 @@ bubblesort:
 Fourier:
 	customasm -f hexstr Fourier.asm -o test.hex
 	.\hex2logi test.hex out.hex
+
+.PHONY: math
+math:
+	customasm -f hexstr math.asm -o test.hex
+	.\hex2logi test.hex out.hex
+
+.PHONY: subtract
+subtract:
+	customasm -f hexstr subtract.asm -o test.hex
+	.\hex2logi test.hex out.hex

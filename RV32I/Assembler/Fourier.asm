@@ -14,7 +14,7 @@ fcvt.s.w fr4, s0 ; fr4 <= c
 fcvt.s.w fr5, s4 ; fr5 <= 2.0f
 
 li t0, 0 ; t0 <= int i = 0
-li32 t1, 100000
+li32 t1, 1000000
 for_i:
 bge t0, t1, setjump(for_i_end, for_i)
 

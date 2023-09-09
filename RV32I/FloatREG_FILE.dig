@@ -2927,7 +2927,7 @@
         </entry>
         <entry>
           <string>NetName</string>
-          <string>Q_0</string>
+          <string>Q_10</string>
         </entry>
       </elementAttributes>
       <pos x="440" y="720"/>
@@ -2937,7 +2937,7 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>Q_0</string>
+          <string>Q_10</string>
         </entry>
       </elementAttributes>
       <pos x="480" y="720"/>
@@ -2951,7 +2951,7 @@
         </entry>
         <entry>
           <string>NetName</string>
-          <string>Q_1</string>
+          <string>Q_12</string>
         </entry>
       </elementAttributes>
       <pos x="440" y="780"/>
@@ -2961,7 +2961,31 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>Q_1</string>
+          <string>Q_11</string>
+        </entry>
+      </elementAttributes>
+      <pos x="660" y="720"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="2"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>Q_13</string>
+        </entry>
+      </elementAttributes>
+      <pos x="440" y="840"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>Q_12</string>
         </entry>
       </elementAttributes>
       <pos x="480" y="780"/>
@@ -2975,31 +2999,7 @@
         </entry>
         <entry>
           <string>NetName</string>
-          <string>Q_2</string>
-        </entry>
-      </elementAttributes>
-      <pos x="440" y="840"/>
-    </visualElement>
-    <visualElement>
-      <elementName>Out</elementName>
-      <elementAttributes>
-        <entry>
-          <string>Label</string>
-          <string>Q_2</string>
-        </entry>
-      </elementAttributes>
-      <pos x="480" y="840"/>
-    </visualElement>
-    <visualElement>
-      <elementName>Tunnel</elementName>
-      <elementAttributes>
-        <entry>
-          <string>rotation</string>
-          <rotation rotation="2"/>
-        </entry>
-        <entry>
-          <string>NetName</string>
-          <string>Q_3</string>
+          <string>Q_11</string>
         </entry>
       </elementAttributes>
       <pos x="620" y="720"/>
@@ -3009,10 +3009,10 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>Q_3</string>
+          <string>Q_13</string>
         </entry>
       </elementAttributes>
-      <pos x="660" y="720"/>
+      <pos x="480" y="840"/>
     </visualElement>
   </visualElements>
   <wires>

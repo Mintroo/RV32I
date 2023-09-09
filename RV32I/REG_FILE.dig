@@ -2937,7 +2937,7 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>t_0</string>
+          <string>a_0</string>
         </entry>
         <entry>
           <string>Bits</string>
@@ -2955,7 +2955,7 @@
         </entry>
         <entry>
           <string>NetName</string>
-          <string>Q_5</string>
+          <string>Q_10</string>
         </entry>
       </elementAttributes>
       <pos x="460" y="720"/>
@@ -2969,7 +2969,7 @@
         </entry>
         <entry>
           <string>NetName</string>
-          <string>Q_6</string>
+          <string>Q_11</string>
         </entry>
       </elementAttributes>
       <pos x="460" y="780"/>
@@ -2983,7 +2983,7 @@
         </entry>
         <entry>
           <string>NetName</string>
-          <string>Q_7</string>
+          <string>Q_12</string>
         </entry>
       </elementAttributes>
       <pos x="460" y="840"/>
@@ -2993,7 +2993,7 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>t_1</string>
+          <string>a_1</string>
         </entry>
         <entry>
           <string>Bits</string>
@@ -3007,7 +3007,7 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>t_2</string>
+          <string>a_2</string>
         </entry>
         <entry>
           <string>Bits</string>
@@ -3025,7 +3025,7 @@
         </entry>
         <entry>
           <string>NetName</string>
-          <string>Q_11</string>
+          <string>Q_5</string>
         </entry>
       </elementAttributes>
       <pos x="640" y="720"/>
@@ -3035,7 +3035,7 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>a_1</string>
+          <string>t_0</string>
         </entry>
         <entry>
           <string>Bits</string>
