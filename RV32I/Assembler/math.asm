@@ -2,32 +2,58 @@
 
 j main
 
-sqrt: ; float fr11(float fr11)
-li32 a1, 0b00111111000000000000000000000000 ; a1 <= 0.5f
-fmv.w.x fr12, a1  ; fr12 <= a1 (0.5f)
-fmul fr13, fr11, fr12 ; fr13 <= xHalf
-li32 a2, 0x5f3759df ; a2 <= 謎の数字
-fmv.x.w a3, fr11 ; a3 <= fr11
-srli a3, a3, 1 ; a3 >> 1
-sub a2, a2, a3  ; tmp <= a2 = 謎の数字 - (x >> 1)
-fmv.w.x fr14, a2 ; fr14 <= xRes = *(float*)tmp
+math:
+.sqrt: ; float(fa0) sqrt(float fa7)[ft8-11, t4-6]
+li32 t6, 0b00111111000000000000000000000000 ; t6 <= 0.5f
+fmv.w.x ft11, t6     ; ft11 <= t6 (0.5f)
+fmul ft10, fa7, ft11 ; xHalf(ft10)
+li32 t5, 0x5f3759df  ; t5 <= magic number
+fmv.x.w t4, fa7      ; t4 <= fa7
+srli t4, t4, 1       ; t4 >> 1
+sub t5, t5, t4       ; tmp(t5) = magicnumber - (x >> 1)
+fmv.w.x ft9, t5      ; xRes(ft9) = *(float*)tmp(t5)
 
-li32 a1, 0b00111111110000000000000000000000 ; a1 <= 1.5f
-fmv.w.x fr12, a1 ; fr12 <= a1 (1.5f)
-fmul fr15, fr13, fr14 ; fr15 <= xHalf * xRes
-fmul fr15, fr15, fr14 ; fr15 <= xHalf * xRes * xRes
-fsub fr15, fr12, fr15 ; fr15 <= 1.5f - (xHalf * xRes * xRes)
-fmul fr14, fr14, fr15 ; xRes *= fr15
-fmul fr15, fr13, fr14 ; fr15 <= xHalf * xRes
-fmul fr15, fr15, fr14 ; fr15 <= xHalf * xRes * xRes
-fsub fr15, fr12, fr15 ; fr15 <= 1.5f - (xHalf * xRes * xRes)
-fmul fr14, fr14, fr15 ; xRes *= fr15
-fmul fr10, fr14, fr11 ; return = xRes * x
+li32 t6, 0b00111111110000000000000000000000 ; t6 <= 1.5f
+fmv.w.x ft11, t6     ; ft11 <= t6 (1.5f)
+fmul ft8, ft10, ft9  ; ft8 <= xHalf * xRes
+fmul ft8, ft8, ft9   ; ft8 <= xHalf * xRes * xRes
+fsub ft8, ft11, ft8  ; ft8 <= 1.5f - (xHalf * xRes * xRes)
+fmul ft9, ft9, ft8   ; xRes = xRes * ft8
+fmul ft8, ft10, ft9  ; ft8 <= xHalf * xRes
+fmul ft8, ft8, ft9   ; ft8 <= xHalf * xRes * xRes
+fsub ft8, ft11, ft8  ; ft8 <= 1.5f - (xHalf * xRes * xRes)
+fmul ft9, ft9, ft8   ; xRes = xRes * ft8
+fmul fa0, ft9, fa7   ; return = xRes * x
 
 ret
 
+.rsqrt: ; float(fa0) rsqrt(float fa7)[ft8-11, t4-6]
+li32 t6, 0b00111111000000000000000000000000 ; t6 <= 0.5f
+fmv.w.x ft11, t6     ; ft11 <= t6 (0.5f)
+fmul ft10, fa7, ft11 ; xHalf(ft10)
+li32 t5, 0x5f3759df  ; t5 <= magic number
+fmv.x.w t4, fa7      ; t4 <= fa7
+srli t4, t4, 1       ; t4 >> 1
+sub t5, t5, t4       ; tmp(t5) = magicnumber - (x >> 1)
+fmv.w.x ft9, t5      ; xRes(ft9) = *(float*)tmp(t5)
+
+li32 t6, 0b00111111110000000000000000000000 ; t6 <= 1.5f
+fmv.w.x ft11, t6     ; ft11 <= t6 (1.5f)
+fmul ft8, ft10, ft9  ; ft8 <= xHalf * xRes
+fmul ft8, ft8, ft9   ; ft8 <= xHalf * xRes * xRes
+fsub ft8, ft11, ft8  ; ft8 <= 1.5f - (xHalf * xRes * xRes)
+fmul ft9, ft9, ft8   ; xRes = xRes * ft8
+fmul ft8, ft10, ft9  ; ft8 <= xHalf * xRes
+fmul ft8, ft8, ft9   ; ft8 <= xHalf * xRes * xRes
+fsub ft8, ft11, ft8  ; ft8 <= 1.5f - (xHalf * xRes * xRes)
+fmul fa0, ft9, ft8   ; return = xRes * ft8
+
+ret
 
 main:
 li32 t0, 0b01000001000100000000000000000000 ; t0 <= 9.0f
-fmv.w.x fr11, t0 ; fr11 <= t0 (9.0f)
-call setjump(sqrt, main + 3)
+fmv.w.x fa7, t0 ; fa7 <= t0 (9.0f)
+call setjump(math.sqrt, main + 3)
+li32 t0, 0b01000000100000000000000000000000 ; t0 <= 4.0f
+fmv.w.x fa7, t0 ; fa7 <= t0 (4.0f)
+call setjump(math.rsqrt, main + 7)

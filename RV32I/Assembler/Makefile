@@ -27,3 +27,13 @@ math:
 subtract:
 	customasm -f hexstr subtract.asm -o test.hex
 	.\hex2logi test.hex out.hex
+
+.PHONY: Line
+Line:
+	customasm -f hexstr Line.asm -o test.hex
+	.\hex2logi test.hex out.hex
+
+.PHONY: Rect
+Rect:
+	customasm -f hexstr Rect.asm -o test.hex
+	.\hex2logi test.hex out.hex

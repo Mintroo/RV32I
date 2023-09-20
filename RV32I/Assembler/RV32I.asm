@@ -40,38 +40,38 @@
 }
 
 #subruledef freg {
-  fr0 => 0
-  fr1 => 1
-  fr2 => 2
-  fr3 => 3
-  fr4 => 4
-  fr5 => 5
-  fr6 => 6
-  fr7 => 7
-  fr8 => 8
-  fr9 => 9
-  fr10 => 10
-  fr11 => 11
-  fr12 => 12
-  fr13 => 13
-  fr14 => 14
-  fr15 => 15
-  fr16 => 16
-  fr17 => 17
-  fr18 => 18
-  fr19 => 19
-  fr20 => 20
-  fr21 => 21
-  fr22 => 22
-  fr23 => 23
-  fr24 => 24
-  fr25 => 25
-  fr26 => 26
-  fr27 => 27
-  fr28 => 28
-  fr29 => 29
-  fr30 => 30
-  fr31 => 31
+  ft0 => 0
+  ft1 => 1
+  ft2 => 2
+  ft3 => 3
+  ft4 => 4
+  ft5 => 5
+  ft6 => 6
+  ft7 => 7
+  fs0 => 8
+  fs1 => 9
+  fa0 => 10
+  fa1 => 11
+  fa2 => 12
+  fa3 => 13
+  fa4 => 14
+  fa5 => 15
+  fa6 => 16
+  fa7 => 17
+  fs2 => 18
+  fs3 => 19
+  fs4 => 20
+  fs5 => 21
+  fs6 => 22
+  fs7 => 23
+  fs8 => 24
+  fs9 => 25
+  fs10 => 26
+  fs11 => 27
+  ft8 => 28
+  ft9 => 29
+  ft10 => 30
+  ft11 => 31
 }
 
 #ruledef {
@@ -201,3 +201,14 @@
 }
 
 #fn setjump(jumpdestination, current) => jumpdestination - current
+
+GPU_EXE = 33554432
+plotLine = 0
+plotRect = 1
+
+GPU_EN = 33554433
+GPU_POS = 33554434
+
+GPU_ONECOLOR = 33554435
+WHITE = 0
+BLACK = 1

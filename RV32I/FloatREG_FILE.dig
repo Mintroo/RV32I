@@ -2937,7 +2937,11 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>Q_10</string>
+          <string>fa_0</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>32</int>
         </entry>
       </elementAttributes>
       <pos x="480" y="720"/>
@@ -2963,6 +2967,10 @@
           <string>Label</string>
           <string>Q_11</string>
         </entry>
+        <entry>
+          <string>Bits</string>
+          <int>32</int>
+        </entry>
       </elementAttributes>
       <pos x="660" y="720"/>
     </visualElement>
@@ -2986,6 +2994,10 @@
         <entry>
           <string>Label</string>
           <string>Q_12</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>32</int>
         </entry>
       </elementAttributes>
       <pos x="480" y="780"/>
@@ -3011,8 +3023,26 @@
           <string>Label</string>
           <string>Q_13</string>
         </entry>
+        <entry>
+          <string>Bits</string>
+          <int>32</int>
+        </entry>
       </elementAttributes>
       <pos x="480" y="840"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Const</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Value</string>
+          <long>0</long>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>32</int>
+        </entry>
+      </elementAttributes>
+      <pos x="40" y="100"/>
     </visualElement>
   </visualElements>
   <wires>
@@ -3326,10 +3356,6 @@
     </wire>
     <wire>
       <p1 x="-20" y="80"/>
-      <p2 x="40" y="80"/>
-    </wire>
-    <wire>
-      <p1 x="40" y="80"/>
       <p2 x="220" y="80"/>
     </wire>
     <wire>
@@ -4211,10 +4237,6 @@
     <wire>
       <p1 x="40" y="680"/>
       <p2 x="40" y="700"/>
-    </wire>
-    <wire>
-      <p1 x="40" y="80"/>
-      <p2 x="40" y="100"/>
     </wire>
     <wire>
       <p1 x="1000" y="740"/>
