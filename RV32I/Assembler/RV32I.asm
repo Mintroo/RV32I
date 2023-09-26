@@ -202,6 +202,9 @@
 
 #fn setjump(jumpdestination, current) => jumpdestination - current
 
+STACKPOINTER = 16777216
+
+
 GPU_EXE = 33554432
 plotLine = 0
 plotRect = 1

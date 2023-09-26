@@ -535,7 +535,7 @@
       <elementAttributes>
         <entry>
           <string>Bits</string>
-          <int>8</int>
+          <int>9</int>
         </entry>
       </elementAttributes>
       <pos x="580" y="140"/>
@@ -545,7 +545,7 @@
       <elementAttributes>
         <entry>
           <string>Bits</string>
-          <int>8</int>
+          <int>9</int>
         </entry>
       </elementAttributes>
       <pos x="580" y="40"/>
@@ -564,7 +564,7 @@
         </entry>
         <entry>
           <string>Bits</string>
-          <int>8</int>
+          <int>9</int>
         </entry>
       </elementAttributes>
       <pos x="560" y="60"/>
@@ -578,7 +578,7 @@
         </entry>
         <entry>
           <string>Bits</string>
-          <int>8</int>
+          <int>9</int>
         </entry>
       </elementAttributes>
       <pos x="560" y="140"/>
@@ -593,7 +593,7 @@
       <elementAttributes>
         <entry>
           <string>Bits</string>
-          <int>8</int>
+          <int>9</int>
         </entry>
       </elementAttributes>
       <pos x="680" y="80"/>
@@ -606,7 +606,7 @@
           <string>d</string>
         </entry>
       </elementAttributes>
-      <pos x="880" y="100"/>
+      <pos x="980" y="100"/>
     </visualElement>
     <visualElement>
       <elementName>Multiplexer</elementName>
@@ -772,8 +772,16 @@
       <elementName>Clock</elementName>
       <elementAttributes>
         <entry>
+          <string>runRealTime</string>
+          <boolean>true</boolean>
+        </entry>
+        <entry>
           <string>Label</string>
           <string>CC</string>
+        </entry>
+        <entry>
+          <string>Frequency</string>
+          <int>10</int>
         </entry>
       </elementAttributes>
       <pos x="-160" y="380"/>
@@ -783,7 +791,7 @@
       <elementAttributes>
         <entry>
           <string>intFormat</string>
-          <intFormat>decSigned</intFormat>
+          <intFormat>dec</intFormat>
         </entry>
       </elementAttributes>
       <pos x="1040" y="660"/>
@@ -793,7 +801,7 @@
       <elementAttributes>
         <entry>
           <string>intFormat</string>
-          <intFormat>decSigned</intFormat>
+          <intFormat>dec</intFormat>
         </entry>
       </elementAttributes>
       <pos x="1000" y="560"/>
@@ -803,7 +811,7 @@
       <elementAttributes>
         <entry>
           <string>intFormat</string>
-          <intFormat>decSigned</intFormat>
+          <intFormat>dec</intFormat>
         </entry>
       </elementAttributes>
       <pos x="1040" y="420"/>
@@ -813,30 +821,10 @@
       <elementAttributes>
         <entry>
           <string>intFormat</string>
-          <intFormat>decSigned</intFormat>
+          <intFormat>dec</intFormat>
         </entry>
       </elementAttributes>
       <pos x="940" y="400"/>
-    </visualElement>
-    <visualElement>
-      <elementName>Splitter</elementName>
-      <elementAttributes>
-        <entry>
-          <string>Input Splitting</string>
-          <string>9</string>
-        </entry>
-      </elementAttributes>
-      <pos x="520" y="40"/>
-    </visualElement>
-    <visualElement>
-      <elementName>Splitter</elementName>
-      <elementAttributes>
-        <entry>
-          <string>Input Splitting</string>
-          <string>9</string>
-        </entry>
-      </elementAttributes>
-      <pos x="520" y="160"/>
     </visualElement>
     <visualElement>
       <elementName>Tunnel</elementName>
@@ -1017,7 +1005,7 @@
       <elementAttributes>
         <entry>
           <string>Bits</string>
-          <int>16</int>
+          <int>18</int>
         </entry>
       </elementAttributes>
       <pos x="800" y="100"/>
@@ -1036,7 +1024,7 @@
         </entry>
         <entry>
           <string>Bits</string>
-          <int>16</int>
+          <int>18</int>
         </entry>
       </elementAttributes>
       <pos x="780" y="120"/>
@@ -1050,6 +1038,50 @@
         </entry>
       </elementAttributes>
       <pos x="80" y="840"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Probe</elementName>
+      <elementAttributes>
+        <entry>
+          <string>intFormat</string>
+          <intFormat>dec</intFormat>
+        </entry>
+      </elementAttributes>
+      <pos x="900" y="160"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Probe</elementName>
+      <elementAttributes>
+        <entry>
+          <string>intFormat</string>
+          <intFormat>dec</intFormat>
+        </entry>
+      </elementAttributes>
+      <pos x="660" y="160"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Probe</elementName>
+      <elementAttributes>
+        <entry>
+          <string>intFormat</string>
+          <intFormat>dec</intFormat>
+        </entry>
+      </elementAttributes>
+      <pos x="660" y="20"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Splitter</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Input Splitting</string>
+          <string>18</string>
+        </entry>
+        <entry>
+          <string>Output Splitting</string>
+          <string>16</string>
+        </entry>
+      </elementAttributes>
+      <pos x="920" y="100"/>
     </visualElement>
   </visualElements>
   <wires>
@@ -1330,11 +1362,11 @@
       <p2 x="340" y="160"/>
     </wire>
     <wire>
-      <p1 x="500" y="160"/>
-      <p2 x="520" y="160"/>
+      <p1 x="880" y="160"/>
+      <p2 x="900" y="160"/>
     </wire>
     <wire>
-      <p1 x="540" y="160"/>
+      <p1 x="500" y="160"/>
       <p2 x="580" y="160"/>
     </wire>
     <wire>
@@ -1390,6 +1422,14 @@
       <p2 x="880" y="100"/>
     </wire>
     <wire>
+      <p1 x="940" y="100"/>
+      <p2 x="980" y="100"/>
+    </wire>
+    <wire>
+      <p1 x="880" y="100"/>
+      <p2 x="920" y="100"/>
+    </wire>
+    <wire>
       <p1 x="380" y="360"/>
       <p2 x="520" y="360"/>
     </wire>
@@ -1403,10 +1443,6 @@
     </wire>
     <wire>
       <p1 x="500" y="40"/>
-      <p2 x="520" y="40"/>
-    </wire>
-    <wire>
-      <p1 x="540" y="40"/>
       <p2 x="580" y="40"/>
     </wire>
     <wire>
@@ -1634,8 +1670,16 @@
       <p2 x="660" y="140"/>
     </wire>
     <wire>
+      <p1 x="660" y="20"/>
+      <p2 x="660" y="40"/>
+    </wire>
+    <wire>
       <p1 x="660" y="40"/>
       <p2 x="660" y="80"/>
+    </wire>
+    <wire>
+      <p1 x="660" y="140"/>
+      <p2 x="660" y="160"/>
     </wire>
     <wire>
       <p1 x="340" y="700"/>
@@ -1712,6 +1756,10 @@
     <wire>
       <p1 x="240" y="760"/>
       <p2 x="240" y="840"/>
+    </wire>
+    <wire>
+      <p1 x="880" y="100"/>
+      <p2 x="880" y="160"/>
     </wire>
     <wire>
       <p1 x="500" y="480"/>

@@ -2983,7 +2983,7 @@
         </entry>
         <entry>
           <string>NetName</string>
-          <string>Q_12</string>
+          <string>Q_7</string>
         </entry>
       </elementAttributes>
       <pos x="460" y="840"/>
@@ -3007,7 +3007,7 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>a_2</string>
+          <string>t_2</string>
         </entry>
         <entry>
           <string>Bits</string>

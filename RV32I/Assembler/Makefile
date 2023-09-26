@@ -37,3 +37,13 @@ Line:
 Rect:
 	customasm -f hexstr Rect.asm -o test.hex
 	.\hex2logi test.hex out.hex
+
+.PHONY: visusort
+visusort:
+	customasm -f hexstr visusort.asm -o test.hex
+	.\hex2logi test.hex out.hex
+
+.PHONY: luitest
+luitest:
+	customasm -f hexstr luitest.asm -o test.hex
+	.\hex2logi test.hex out.hex

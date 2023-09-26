@@ -34,7 +34,7 @@ sw t1, t0, 0
 li32 t0, GPU_EN
 GPU0:
 lw t2, t0, 0
-bnez t2, setjump(GPU0, GPU0 + 1)
+bnez t2, setjump(GPU0, GPU0+1)
 
 li32 t0, GPU_POS
 li32 t1, 0x7417A078
