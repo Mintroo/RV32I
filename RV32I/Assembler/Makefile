@@ -47,3 +47,8 @@ visusort:
 luitest:
 	customasm -f hexstr luitest.asm -o test.hex
 	.\hex2logi test.hex out.hex
+
+.PHONY: asciitest
+asciitest:
+	customasm -f hexstr asciitest.asm -o test.hex
+	.\hex2logi test.hex out.hex

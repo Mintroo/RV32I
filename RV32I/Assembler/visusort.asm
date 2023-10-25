@@ -99,3 +99,5 @@ addi t0, t0, 1
 j setjump(for_i, for_i+7)
 for_i_end:
 call setjump(bubblesort, for_i_end)
+
+li t2, "\r"
