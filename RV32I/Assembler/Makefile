@@ -52,3 +52,8 @@ luitest:
 asciitest:
 	customasm -f hexstr asciitest.asm -o test.hex
 	.\hex2logi test.hex out.hex
+
+.PHONY: asciitest2
+asciitest2:
+	customasm -f hexstr asciitest2.asm -o test.hex
+	.\hex2logi test.hex out.hex

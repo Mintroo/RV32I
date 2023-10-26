@@ -85,8 +85,7 @@ sw ra, sp, 0 ; plotString関数のraを退避
 call setjump(plotChar, plotString.defaulto + 2)
 lw ra, sp, 0 ; plotString関数のraを復帰
 addi sp, sp, 1 ; spを復帰
-srli t5, a7, 24
-and t5, t5, t6 ; x0の値をt5に抽出
+srli t5, a7, 24 ; x0をt5に抽出
 li t6, 249
 ble t5, t6, setjump(plotString.defaultoclear, plotString.defaultoclear - 3)
 li a0, 1 ; return 1
