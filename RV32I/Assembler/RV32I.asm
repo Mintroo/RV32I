@@ -167,7 +167,7 @@
 
   mv {rd:reg}, {rs1:reg}   => asm { addi {rd}, {rs1}, 0 }
   not {rd:reg}, {rs1:reg}  => asm { xori {rd}, {rs1}, -1 }
-  neg {rd:reg}, {rs1:reg}  => asm { sub {rd}, 0, {rs1} }
+  neg {rd:reg}, {rs1:reg}  => asm { sub {rd}, zero, {rs1} }
   seqz {rd:reg}, {rs1:reg} => asm { sltiu {rd}, {rs1}, 1 }
   snez {rd:reg}, {rs1:reg} => asm { sltu {rd}, zero, {rs1} }
   sltz {rd:reg}, {rs1:reg} => asm { slt {rd}, {rs1}, zero }

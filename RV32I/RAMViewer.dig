@@ -82,36 +82,6 @@
       <pos x="580" y="520"/>
     </visualElement>
     <visualElement>
-      <elementName>ExternalFile</elementName>
-      <elementAttributes>
-        <entry>
-          <string>applicationType</string>
-          <appType>GHDL</appType>
-        </entry>
-        <entry>
-          <string>Label</string>
-          <string>LEDmat_decorder</string>
-        </entry>
-        <entry>
-          <string>externalInputs</string>
-          <string>raw:6</string>
-        </entry>
-        <entry>
-          <string>externalOutputs</string>
-          <string>data:64</string>
-        </entry>
-        <entry>
-          <string>Width</string>
-          <int>4</int>
-        </entry>
-        <entry>
-          <string>CodeFile</string>
-          <file>C:\Users\Gfla\Documents\GitHub\RV32I\RV32I\LEDmat_decorder.vhd</file>
-        </entry>
-      </elementAttributes>
-      <pos x="600" y="440"/>
-    </visualElement>
-    <visualElement>
       <elementName>LedMatrix</elementName>
       <elementAttributes>
         <entry>
@@ -133,7 +103,7 @@
         </entry>
         <entry>
           <string>rowDataBits</string>
-          <int>64</int>
+          <int>32</int>
         </entry>
       </elementAttributes>
       <pos x="780" y="440"/>
@@ -165,20 +135,6 @@
         </entry>
       </elementAttributes>
       <pos x="540" y="340"/>
-    </visualElement>
-    <visualElement>
-      <elementName>Splitter</elementName>
-      <elementAttributes>
-        <entry>
-          <string>Input Splitting</string>
-          <string>32</string>
-        </entry>
-        <entry>
-          <string>Output Splitting</string>
-          <string>6</string>
-        </entry>
-      </elementAttributes>
-      <pos x="540" y="440"/>
     </visualElement>
     <visualElement>
       <elementName>In</elementName>
@@ -231,16 +187,8 @@
       <p2 x="700" y="500"/>
     </wire>
     <wire>
-      <p1 x="560" y="440"/>
-      <p2 x="600" y="440"/>
-    </wire>
-    <wire>
-      <p1 x="680" y="440"/>
-      <p2 x="780" y="440"/>
-    </wire>
-    <wire>
       <p1 x="500" y="440"/>
-      <p2 x="540" y="440"/>
+      <p2 x="780" y="440"/>
     </wire>
     <wire>
       <p1 x="680" y="520"/>

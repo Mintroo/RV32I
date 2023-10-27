@@ -95,3 +95,97 @@ li32 t6, 0x06000000
 add a7, a7, t6
 .ASCIIdone:
 j setjump(plotString.loop, plotString.ASCIIdone)
+
+ret
+
+; a5 = stringcolor, a4 = number, a7 = position
+; a0 : when 0 is 画面内で終了
+;    : when 1 is 画面外で強制終了
+plotDEC: ; int plotDEC(int a5, int a4, int a7)[]
+li t6, 0  ; t6 : カウントアップ変数
+li t5, 0  ; t5 : あまり、ASCIIコード格納変数
+li t4, 10 ; t4 : 一時定数、文字列ポインタ
+li t3, 0  ; t3 : mod4変数
+li t2, 0  ; t2 : 一時定数
+.sign:
+bgez a4, setjump(plotDEC.strnumloop, plotDEC.sign)
+neg a4, a4
+li t3, 1
+.strnumloop:
+beqz a4, setjump(plotDEC.strnumed, plotDEC.strnumloop)
+rem t5, a4, t4
+addi t5, t5, 48
+sw t5, t6, 0
+div a4, a4, t4
+addi t6, t6, 1
+j setjump(plotDEC.strnumloop, plotDEC.strnumed - 1)
+.strnumed:
+beqz t3, setjump(plotDEC.strASCII, plotDEC.strnumed)
+li t5, "-"
+sw t5, t6, 0
+addi t6, t6, 1
+li t3, 0
+.strASCII:
+li t4, 32 ; 数値のASCII文字列の先頭のポインタ
+bnez t6, setjump(plotDEC.strASCIIloop, plotDEC.strASCII + 1)
+li32 t5, "0\0\0\0" ; numberが0の場合は、"0"を代入してstrASCIIは終了
+sw t5, t4, 0
+j setjump(plotDEC.plot, plotDEC.strASCIIloop - 1)
+
+.strASCIIloop:
+beqz t6, setjump(plotDEC.NUL, plotDEC.strASCIIloop)
+addi t6, t6, -1
+lw t5, t6, 0
+.case0:
+li t2, 0
+bne t3, t2, setjump(plotDEC.case1, plotDEC.case0 + 1)
+sb t5, t4, 3
+addi t3, t3, 1
+j setjump(plotDEC.strASCIIloop, plotDEC.case1 - 1)
+.case1:
+li t2, 1
+bne t3, t2, setjump(plotDEC.case2, plotDEC.case1 + 1)
+sb t5, t4, 2
+addi t3, t3, 1
+j setjump(plotDEC.strASCIIloop, plotDEC.case2 - 1)
+.case2:
+li t2, 2
+bne t3, t2, setjump(plotDEC.default, plotDEC.case2 + 1)
+sb t5, t4, 1
+addi t3, t3, 1
+j setjump(plotDEC.strASCIIloop, plotDEC.default - 1)
+.default:
+sb t5, t4, 0
+li t3, 0
+addi t4, t4, 1
+j setjump(plotDEC.strASCIIloop, plotDEC.NUL - 1)
+
+.NUL:
+li t5, "\0"
+.ccase0:
+li t2, 0
+bne t3, t2, setjump(plotDEC.ccase1, plotDEC.ccase0 + 1)
+sb t5, t4, 3
+j setjump(plotDEC.plot, plotDEC.ccase1 - 1)
+.ccase1:
+li t2, 1
+bne t3, t2, setjump(plotDEC.ccase2, plotDEC.ccase1 + 1)
+sb t5, t4, 2
+j setjump(plotDEC.plot, plotDEC.ccase2 - 1)
+.ccase2:
+li t2, 2
+bne t3, t2, setjump(plotDEC.ddefault, plotDEC.ccase2 + 1)
+sb t5, t4, 1
+j setjump(plotDEC.plot, plotDEC.ddefault - 1)
+.ddefault:
+sb t5, t4, 0
+.plot:
+li a3, 0
+li a4, 32
+addi sp, sp, -1
+sw ra, sp, 0 ; plotDEC関数のraを退避
+call setjump(plotString, plotDEC.plot + 4)
+lw ra, sp, 0 ; plotDEC関数のraを復帰
+addi sp, sp, 1 ; spを復帰
+
+ret
