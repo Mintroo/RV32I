@@ -62,3 +62,8 @@ asciitest2:
 asciitest3:
 	customasm -f hexstr asciitest3.asm -o test.hex
 	.\hex2logi test.hex out.hex
+
+.PHONY: collatz
+collatz:
+	customasm -f hexstr collatz.asm -o test.hex
+	.\hex2logi test.hex out.hex

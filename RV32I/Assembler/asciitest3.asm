@@ -1,10 +1,5 @@
 #include "RV32I.asm"
-
-li32 sp, STACKPOINTER
-
-j main-2
-
-#include "stdio.asm"
+#include "GPUplot.asm"
 
 main:
 li32 s1, -498275

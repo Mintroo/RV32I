@@ -1,10 +1,5 @@
 #include "RV32I.asm"
-
-li32 sp, STACKPOINTER
-
-j main-2
-
-#include "stdio.asm"
+#include "GPUplot.asm"
 
 main:
 li s0, 0 ; ワード内の位置のmod4
@@ -63,7 +58,10 @@ addi s2, s2, 1
 li32 s1, "rld "
 sw s1, s2, 0
 addi s2, s2, 1
-li32 s1, "!!\0\0"
+li32 s1, "!!\r\n"
+sw s1, s2, 0
+addi s2, s2, 1
+li32 s1, "eah\0"
 sw s1, s2, 0
 li a3, 0 ; mod4position = 0
 li a4, 0 ; stringptr = 0

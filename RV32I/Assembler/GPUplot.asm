@@ -71,7 +71,7 @@ ret ; 画面外に出たので強制終了
 .NFclear:
 li32 t6, 0x000d0000
 add a7, a7, t6
-j setjump(plotString.ASCIIdone, plotString.NF + 5)
+j setjump(plotString.ASCIIdone, plotString.CR - 1)
 .CR:
 li t6, "\r"
 bne a6, t6, setjump(plotString.defaulto, plotString.CR + 1)
@@ -188,4 +188,85 @@ call setjump(plotString, plotDEC.plot + 4)
 lw ra, sp, 0 ; plotDEC関数のraを復帰
 addi sp, sp, 1 ; spを復帰
 
+ret
+
+; a5 = stringcolor, a7 = position
+plotRectangle:
+li32 t6, GPU_ONECOLOR
+sw a5, t6, 0
+li32 t6, GPU_POS
+sw a7, t6, 0
+li32 t6, GPU_EXE
+li t5, plotRect
+sw t5, t6, 0
+li32 t6, GPU_EN
+.rect:
+lw t5, t6, 0
+bnez t5, setjump(plotRectangle.rect, plotRectangle.rect + 1)
+
+ret
+
+; a5 = stringcolor, a6 = thickness, a7 = position
+plotSquareFlame:
+bgtz a6, setjump(plotSquareFlame.plot, plotSquareFlame)
+ret
+.plot:
+sw a7, zero, 0 ; edit_position
+sw a7, zero, 1 ; protect_position
+
+lb t6, zero, 2
+sb t6, zero, 0
+lw a7, zero, 0
+addi sp, sp, -1
+sw ra, sp, 0 ; plotSquareFlame関数のraを退避
+call setjump(plotRectangle, plotSquareFlame.plot + 7)
+lw ra, sp, 0 ; plotSquareFlame関数のraを復帰
+addi sp, sp, 1 ; spを復帰
+lw t6, zero, 1
+sw t6, zero, 0
+
+lb t6, zero, 3
+sb t6, zero, 1
+lw a7, zero, 0
+addi sp, sp, -1
+sw ra, sp, 0 ; plotSquareFlame関数のraを退避
+call setjump(plotRectangle, plotSquareFlame.plot + 17)
+lw ra, sp, 0 ; plotSquareFlame関数のraを復帰
+addi sp, sp, 1 ; spを復帰
+lw t6, zero, 1
+sw t6, zero, 0
+
+lb t6, zero, 0
+sb t6, zero, 2
+lw a7, zero, 0
+addi sp, sp, -1
+sw ra, sp, 0 ; plotSquareFlame関数のraを退避
+call setjump(plotRectangle, plotSquareFlame.plot + 27)
+lw ra, sp, 0 ; plotSquareFlame関数のraを復帰
+addi sp, sp, 1 ; spを復帰
+lw t6, zero, 1
+sw t6, zero, 0
+
+lb t6, zero, 1
+sb t6, zero, 3
+lw a7, zero, 0
+addi sp, sp, -1
+sw ra, sp, 0 ; plotSquareFlame関数のraを退避
+call setjump(plotRectangle, plotSquareFlame.plot + 37)
+lw ra, sp, 0 ; plotSquareFlame関数のraを復帰
+addi sp, sp, 1 ; spを復帰
+
+addi a6, a6, -1
+beqz a6, setjump(plotSquareFlame.return, plotSquareFlame.plot + 41)
+lw a7, zero, 1
+li32 t6, 0x00000101
+add a7, a7, t6
+li32 t6, 0x01010000
+sub a7, a7, t6
+addi sp, sp, -1
+sw ra, sp, 0 ; 再帰呼び出し前のplotSquareFlame関数のraを退避
+call setjump(plotSquareFlame, plotSquareFlame + 51)
+lw ra, sp, 0 ; 再帰呼び出し前のplotSquareFlame関数のraを復帰
+addi sp, sp, 1 ; spを復帰
+.return:
 ret

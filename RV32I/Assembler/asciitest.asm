@@ -1,10 +1,5 @@
 #include "RV32I.asm"
-
-li32 sp, STACKPOINTER
-
-j main-2
-
-#include "stdio.asm"
+#include "GPUplot.asm"
 
 main:
 li s2, 0 ; アドレス指定
