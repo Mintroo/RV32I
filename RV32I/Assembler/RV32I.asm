@@ -204,7 +204,23 @@
 
 STACKPOINTER = 16777216
 
+; GameControllerレジスタ関連
+GameC_1P = 16777216
+GameC_2P = 16777217
+GameC_3P = 16777218
+GameC_4P = 16777219
 
+; GameController入力パターン
+GameC_right = 1
+GameC_down  = 2
+GameC_up    = 4
+GameC_left  = 8
+GameC_A     = 16
+GameC_B     = 32
+GameC_X     = 64
+GameC_Y     = 128
+
+; GPUレジスタ関連
 GPU_EXE = 33554432
 plotLine = 0
 plotRect = 1
@@ -219,5 +235,7 @@ BLACK = 1
 
 GPU_ASCIIPTR = 33554436
 
+
+; spレジスタの初期値設定
 li32 sp, STACKPOINTER
 j main-2
