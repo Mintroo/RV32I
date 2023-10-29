@@ -4,4 +4,4 @@ top.digファイルをDigital (logisim digital で検索すると出ます。)�
   
 配布前提ではないため、ファイルパスなどの細々としたエラーは出るかもしれません。  
 また、makeとcustomasmを導入して環境パスに設定しないと、makeはできません。  
-また、make時に使用するhex2logiアプリケーションは、MinGW環境でビルドしているので、多分Windows以外では動きません。
+また、make時に使用するhex2logiアプリケーションは、MinGW環境でビルドしているので、多分Windows以外では動きません。その場合はhex2logi.cを新たにビルドしてください。
