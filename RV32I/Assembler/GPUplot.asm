@@ -190,6 +190,89 @@ addi sp, sp, 1 ; spを復帰
 
 ret
 
+; a5 = stringcolor, a4 = number, a7 = position
+; a0 : when 0 is 画面内で終了
+;    : when 1 is 画面外で強制終了
+plotDECu: ; int plotDECu(int a5, unsigned int a4, int a7)[]
+li t6, 0  ; t6 : カウントアップ変数
+li t5, 0  ; t5 : あまり、ASCIIコード格納変数
+li t4, 10 ; t4 : 一時定数、文字列ポインタ
+li t3, 0  ; t3 : mod4変数
+li t2, 0  ; t2 : 一時定数
+
+.strnumloop:
+beqz a4, setjump(plotDECu.strASCII, plotDECu.strnumloop)
+remu t5, a4, t4
+addi t5, t5, 48
+sw t5, t6, 0
+divu a4, a4, t4
+addi t6, t6, 1
+j setjump(plotDECu.strnumloop, plotDECu.strASCII - 1)
+.strASCII:
+li t4, 32 ; 数値のASCII文字列の先頭のポインタ
+bnez t6, setjump(plotDECu.strASCIIloop, plotDECu.strASCII + 1)
+li32 t5, "0\0\0\0" ; numberが0の場合は、"0"を代入してstrASCIIは終了
+sw t5, t4, 0
+j setjump(plotDECu.plot, plotDECu.strASCIIloop - 1)
+
+.strASCIIloop:
+beqz t6, setjump(plotDECu.NUL, plotDECu.strASCIIloop)
+addi t6, t6, -1
+lw t5, t6, 0
+.case0:
+li t2, 0
+bne t3, t2, setjump(plotDECu.case1, plotDECu.case0 + 1)
+sb t5, t4, 3
+addi t3, t3, 1
+j setjump(plotDECu.strASCIIloop, plotDECu.case1 - 1)
+.case1:
+li t2, 1
+bne t3, t2, setjump(plotDECu.case2, plotDECu.case1 + 1)
+sb t5, t4, 2
+addi t3, t3, 1
+j setjump(plotDECu.strASCIIloop, plotDECu.case2 - 1)
+.case2:
+li t2, 2
+bne t3, t2, setjump(plotDECu.default, plotDECu.case2 + 1)
+sb t5, t4, 1
+addi t3, t3, 1
+j setjump(plotDECu.strASCIIloop, plotDECu.default - 1)
+.default:
+sb t5, t4, 0
+li t3, 0
+addi t4, t4, 1
+j setjump(plotDECu.strASCIIloop, plotDECu.NUL - 1)
+
+.NUL:
+li t5, "\0"
+.ccase0:
+li t2, 0
+bne t3, t2, setjump(plotDECu.ccase1, plotDECu.ccase0 + 1)
+sb t5, t4, 3
+j setjump(plotDECu.plot, plotDECu.ccase1 - 1)
+.ccase1:
+li t2, 1
+bne t3, t2, setjump(plotDECu.ccase2, plotDECu.ccase1 + 1)
+sb t5, t4, 2
+j setjump(plotDECu.plot, plotDECu.ccase2 - 1)
+.ccase2:
+li t2, 2
+bne t3, t2, setjump(plotDECu.ddefault, plotDECu.ccase2 + 1)
+sb t5, t4, 1
+j setjump(plotDECu.plot, plotDECu.ddefault - 1)
+.ddefault:
+sb t5, t4, 0
+.plot:
+li a3, 0
+li a4, 32
+addi sp, sp, -1
+sw ra, sp, 0 ; plotDEC関数のraを退避
+call setjump(plotString, plotDECu.plot + 4)
+lw ra, sp, 0 ; plotDEC関数のraを復帰
+addi sp, sp, 1 ; spを復帰
+
+ret
+
 ; a5 = stringcolor, a7 = position
 plotRectangle:
 li32 t6, GPU_ONECOLOR

@@ -1,13 +1,8 @@
 #include "RV32I.asm"
+#include "random256.asm"
 
 backcolor = BLACK
 stickcolor = WHITE
-
-li32 sp, STACKPOINTER
-
-j main-2
-
-#include "random256.asm"
 
 ; a5 = memoryaddress, a6 = value, a7 = color
 plotStick: ; void plotStick(int a5, int a6, int a7)[t5-6]
