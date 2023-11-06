@@ -93,8 +93,8 @@
 
   addui {rd:reg}, {rs1:reg}, {imm}  => imm`12       @ rs1`5 @ 0`3 @ rd`5 @ 20`7
 
-  sb {rs2:reg}, {addr:reg}, {offset} => 0`7 @ rs2`5 @ addr`5 @ 0`3 @ offset`5 @ 35`7
-  sh {rs2:reg}, {addr:reg}, {offset} => 0`7 @ rs2`5 @ addr`5 @ 1`3 @ offset`5 @ 35`7
+  sb {rs2:reg}, {addr:reg}, {offset} => offset[11:5] @ rs2`5 @ addr`5 @ 0`3 @ offset[4:0] @ 35`7
+  sh {rs2:reg}, {addr:reg}, {offset} => offset[11:5] @ rs2`5 @ addr`5 @ 1`3 @ offset[4:0] @ 35`7
   sw {rs2:reg}, {addr:reg}, {offset} => offset[11:5] @ rs2`5 @ addr`5 @ 2`3 @ offset[4:0] @ 35`7
 
   add {rd:reg}, {rs1:reg}, {rs2:reg}  => 0`7  @ rs2`5 @ rs1`5 @ 0`3 @ rd`5 @ 51`7
@@ -160,6 +160,7 @@
   nop => asm { addi 0, 0, 0 }
 
   li {rd:reg}, {imm} => asm { addi {rd}, zero, {imm} }
+  liu {rd:reg}, {imm} => asm { addui {rd}, zero, {imm} }
   li32 {rd:reg}, {imm} => asm {
                               lui {rd}, {imm}[31:12]
                               addui {rd}, {rd}, {imm}[11:0]
@@ -206,9 +207,9 @@ STACKPOINTER = 16777216
 
 ; GameControllerレジスタ関連
 GameC_1P = 16777216
-GameC_2P = 16777217
-GameC_3P = 16777218
-GameC_4P = 16777219
+GameC_2P = 16777220
+GameC_3P = 16777224
+GameC_4P = 16777228
 
 ; GameController入力パターン
 GameC_right = 1
@@ -227,13 +228,22 @@ plotRect = 1
 plotASCII = 2
 
 GPU_EN = 33554433
-GPU_POS = 33554434
 
-GPU_ONECOLOR = 33554435
+GPU_POS = 33554434
+GPU_POS_x0 = 33554434
+GPU_POS_y0 = 33554435
+GPU_POS_x1 = 33554436
+GPU_POS_y1 = 33554437
+
+GPU_ONECOLOR = 33554438
 WHITE = 0
 BLACK = 1
 
-GPU_ASCIIPTR = 33554436
+GPU_ASCIIPTR = 33554442
+
+GPU_APOS = 33554444
+GPU_APOS_x0 = 33554444
+GPU_APOS_y0 = 33554445
 
 
 ; spレジスタの初期値設定

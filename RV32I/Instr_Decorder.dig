@@ -99,16 +99,6 @@
       <pos x="380" y="500"/>
     </visualElement>
     <visualElement>
-      <elementName>Out</elementName>
-      <elementAttributes>
-        <entry>
-          <string>Label</string>
-          <string>AddressSrc</string>
-        </entry>
-      </elementAttributes>
-      <pos x="1520" y="20"/>
-    </visualElement>
-    <visualElement>
       <elementName>In</elementName>
       <elementAttributes>
         <entry>
@@ -197,16 +187,6 @@
         </entry>
       </elementAttributes>
       <pos x="380" y="120"/>
-    </visualElement>
-    <visualElement>
-      <elementName>Out</elementName>
-      <elementAttributes>
-        <entry>
-          <string>Label</string>
-          <string>MemSrc</string>
-        </entry>
-      </elementAttributes>
-      <pos x="1520" y="-60"/>
     </visualElement>
     <visualElement>
       <elementName>And</elementName>
@@ -1258,10 +1238,10 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>ExeSrc</string>
+          <string>MemSrc</string>
         </entry>
       </elementAttributes>
-      <pos x="1520" y="-260"/>
+      <pos x="1520" y="-60"/>
     </visualElement>
     <visualElement>
       <elementName>Tunnel</elementName>
@@ -1296,10 +1276,10 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>floatRegWrite</string>
+          <string>ExeSrc</string>
         </entry>
       </elementAttributes>
-      <pos x="1520" y="-160"/>
+      <pos x="1520" y="-260"/>
     </visualElement>
     <visualElement>
       <elementName>NOr</elementName>
@@ -1386,10 +1366,10 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>FPUSrc</string>
+          <string>floatRegWrite</string>
         </entry>
       </elementAttributes>
-      <pos x="1520" y="-100"/>
+      <pos x="1520" y="-160"/>
     </visualElement>
     <visualElement>
       <elementName>Tunnel</elementName>
@@ -1410,14 +1390,10 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>FPUCtrl</string>
-        </entry>
-        <entry>
-          <string>Bits</string>
-          <int>5</int>
+          <string>FPUSrc</string>
         </entry>
       </elementAttributes>
-      <pos x="1340" y="320"/>
+      <pos x="1520" y="-100"/>
     </visualElement>
     <visualElement>
       <elementName>Tunnel</elementName>
@@ -1508,18 +1484,14 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>ALUCtrl</string>
+          <string>FPUCtrl</string>
         </entry>
         <entry>
           <string>Bits</string>
           <int>5</int>
         </entry>
-        <entry>
-          <string>intFormat</string>
-          <intFormat>dec</intFormat>
-        </entry>
       </elementAttributes>
-      <pos x="1140" y="160"/>
+      <pos x="1340" y="320"/>
     </visualElement>
     <visualElement>
       <elementName>Tunnel</elementName>
@@ -1545,14 +1517,18 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>RegWrite</string>
+          <string>ALUCtrl</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>5</int>
         </entry>
         <entry>
           <string>intFormat</string>
           <intFormat>dec</intFormat>
         </entry>
       </elementAttributes>
-      <pos x="1520" y="-1080"/>
+      <pos x="1140" y="160"/>
     </visualElement>
     <visualElement>
       <elementName>Tunnel</elementName>
@@ -1573,18 +1549,14 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>ImmSrc</string>
-        </entry>
-        <entry>
-          <string>Bits</string>
-          <int>3</int>
+          <string>RegWrite</string>
         </entry>
         <entry>
           <string>intFormat</string>
           <intFormat>dec</intFormat>
         </entry>
       </elementAttributes>
-      <pos x="1520" y="-960"/>
+      <pos x="1520" y="-1080"/>
     </visualElement>
     <visualElement>
       <elementName>Tunnel</elementName>
@@ -1605,14 +1577,18 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>ALUSrc</string>
+          <string>ImmSrc</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>3</int>
         </entry>
         <entry>
           <string>intFormat</string>
           <intFormat>dec</intFormat>
         </entry>
       </elementAttributes>
-      <pos x="1520" y="-760"/>
+      <pos x="1520" y="-960"/>
     </visualElement>
     <visualElement>
       <elementName>Tunnel</elementName>
@@ -1652,6 +1628,20 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
+          <string>ALUSrc</string>
+        </entry>
+        <entry>
+          <string>intFormat</string>
+          <intFormat>dec</intFormat>
+        </entry>
+      </elementAttributes>
+      <pos x="1520" y="-760"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
           <string>ResultSrc</string>
         </entry>
         <entry>
@@ -1664,20 +1654,6 @@
         </entry>
       </elementAttributes>
       <pos x="1520" y="-660"/>
-    </visualElement>
-    <visualElement>
-      <elementName>Out</elementName>
-      <elementAttributes>
-        <entry>
-          <string>Label</string>
-          <string>JumpSrc</string>
-        </entry>
-        <entry>
-          <string>intFormat</string>
-          <intFormat>dec</intFormat>
-        </entry>
-      </elementAttributes>
-      <pos x="1520" y="-520"/>
     </visualElement>
     <visualElement>
       <elementName>And</elementName>
@@ -3317,14 +3293,14 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>MemWrite</string>
+          <string>JumpSrc</string>
         </entry>
         <entry>
           <string>intFormat</string>
           <intFormat>dec</intFormat>
         </entry>
       </elementAttributes>
-      <pos x="1520" y="-460"/>
+      <pos x="1520" y="-520"/>
     </visualElement>
     <visualElement>
       <elementName>Or</elementName>
@@ -3383,18 +3359,14 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>funct3</string>
-        </entry>
-        <entry>
-          <string>Bits</string>
-          <int>3</int>
+          <string>MemWrite</string>
         </entry>
         <entry>
           <string>intFormat</string>
           <intFormat>dec</intFormat>
         </entry>
       </elementAttributes>
-      <pos x="1000" y="220"/>
+      <pos x="1520" y="-460"/>
     </visualElement>
     <visualElement>
       <elementName>Tunnel</elementName>
@@ -3415,18 +3387,18 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>rs1</string>
+          <string>funct3</string>
         </entry>
         <entry>
           <string>Bits</string>
-          <int>5</int>
+          <int>3</int>
         </entry>
         <entry>
           <string>intFormat</string>
           <intFormat>dec</intFormat>
         </entry>
       </elementAttributes>
-      <pos x="780" y="360"/>
+      <pos x="1000" y="220"/>
     </visualElement>
     <visualElement>
       <elementName>PriorityEncoder</elementName>
@@ -3517,7 +3489,7 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>rs2</string>
+          <string>rs1</string>
         </entry>
         <entry>
           <string>Bits</string>
@@ -3528,7 +3500,7 @@
           <intFormat>dec</intFormat>
         </entry>
       </elementAttributes>
-      <pos x="580" y="420"/>
+      <pos x="780" y="360"/>
     </visualElement>
     <visualElement>
       <elementName>Tunnel</elementName>
@@ -3549,7 +3521,7 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>rd</string>
+          <string>rs2</string>
         </entry>
         <entry>
           <string>Bits</string>
@@ -3560,7 +3532,7 @@
           <intFormat>dec</intFormat>
         </entry>
       </elementAttributes>
-      <pos x="580" y="280"/>
+      <pos x="580" y="420"/>
     </visualElement>
     <visualElement>
       <elementName>Tunnel</elementName>
@@ -3845,16 +3817,6 @@
       <pos x="980" y="40"/>
     </visualElement>
     <visualElement>
-      <elementName>Or</elementName>
-      <elementAttributes>
-        <entry>
-          <string>Inputs</string>
-          <int>3</int>
-        </entry>
-      </elementAttributes>
-      <pos x="1420" y="0"/>
-    </visualElement>
-    <visualElement>
       <elementName>Tunnel</elementName>
       <elementAttributes>
         <entry>
@@ -3924,102 +3886,22 @@
       <pos x="800" y="-120"/>
     </visualElement>
     <visualElement>
-      <elementName>Tunnel</elementName>
-      <elementAttributes>
-        <entry>
-          <string>rotation</string>
-          <rotation rotation="2"/>
-        </entry>
-        <entry>
-          <string>NetName</string>
-          <string>funct3_010</string>
-        </entry>
-      </elementAttributes>
-      <pos x="1180" y="-20"/>
-    </visualElement>
-    <visualElement>
-      <elementName>Or</elementName>
-      <elementAttributes/>
-      <pos x="1200" y="0"/>
-    </visualElement>
-    <visualElement>
-      <elementName>And</elementName>
-      <elementAttributes/>
-      <pos x="1280" y="-20"/>
-    </visualElement>
-    <visualElement>
-      <elementName>Tunnel</elementName>
-      <elementAttributes>
-        <entry>
-          <string>rotation</string>
-          <rotation rotation="2"/>
-        </entry>
-        <entry>
-          <string>NetName</string>
-          <string>load</string>
-        </entry>
-      </elementAttributes>
-      <pos x="1180" y="0"/>
-    </visualElement>
-    <visualElement>
-      <elementName>Tunnel</elementName>
-      <elementAttributes>
-        <entry>
-          <string>rotation</string>
-          <rotation rotation="2"/>
-        </entry>
-        <entry>
-          <string>NetName</string>
-          <string>store</string>
-        </entry>
-      </elementAttributes>
-      <pos x="1180" y="40"/>
-    </visualElement>
-    <visualElement>
-      <elementName>Tunnel</elementName>
-      <elementAttributes>
-        <entry>
-          <string>rotation</string>
-          <rotation rotation="2"/>
-        </entry>
-        <entry>
-          <string>NetName</string>
-          <string>fload</string>
-        </entry>
-      </elementAttributes>
-      <pos x="1400" y="20"/>
-    </visualElement>
-    <visualElement>
-      <elementName>Tunnel</elementName>
-      <elementAttributes>
-        <entry>
-          <string>rotation</string>
-          <rotation rotation="2"/>
-        </entry>
-        <entry>
-          <string>NetName</string>
-          <string>fstore</string>
-        </entry>
-      </elementAttributes>
-      <pos x="1400" y="40"/>
-    </visualElement>
-    <visualElement>
       <elementName>Out</elementName>
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>imm</string>
+          <string>rd</string>
         </entry>
         <entry>
           <string>Bits</string>
-          <int>25</int>
+          <int>5</int>
         </entry>
         <entry>
           <string>intFormat</string>
           <intFormat>dec</intFormat>
         </entry>
       </elementAttributes>
-      <pos x="580" y="500"/>
+      <pos x="580" y="280"/>
     </visualElement>
     <visualElement>
       <elementName>Tunnel</elementName>
@@ -4083,19 +3965,29 @@
       </elementAttributes>
       <pos x="900" y="240"/>
     </visualElement>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>imm</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>25</int>
+        </entry>
+        <entry>
+          <string>intFormat</string>
+          <intFormat>dec</intFormat>
+        </entry>
+      </elementAttributes>
+      <pos x="580" y="500"/>
+    </visualElement>
   </visualElements>
   <wires>
     <wire>
       <p1 x="460" y="0"/>
       <p2 x="480" y="0"/>
-    </wire>
-    <wire>
-      <p1 x="1340" y="0"/>
-      <p2 x="1420" y="0"/>
-    </wire>
-    <wire>
-      <p1 x="1180" y="0"/>
-      <p2 x="1200" y="0"/>
     </wire>
     <wire>
       <p1 x="980" y="0"/>
@@ -4238,10 +4130,6 @@
       <p2 x="480" y="-20"/>
     </wire>
     <wire>
-      <p1 x="1180" y="-20"/>
-      <p2 x="1280" y="-20"/>
-    </wire>
-    <wire>
       <p1 x="1400" y="-660"/>
       <p2 x="1420" y="-660"/>
     </wire>
@@ -4276,18 +4164,6 @@
     <wire>
       <p1 x="1060" y="20"/>
       <p2 x="1080" y="20"/>
-    </wire>
-    <wire>
-      <p1 x="1260" y="20"/>
-      <p2 x="1280" y="20"/>
-    </wire>
-    <wire>
-      <p1 x="1400" y="20"/>
-      <p2 x="1420" y="20"/>
-    </wire>
-    <wire>
-      <p1 x="1480" y="20"/>
-      <p2 x="1520" y="20"/>
     </wire>
     <wire>
       <p1 x="1300" y="-280"/>
@@ -4456,14 +4332,6 @@
     <wire>
       <p1 x="720" y="40"/>
       <p2 x="740" y="40"/>
-    </wire>
-    <wire>
-      <p1 x="1180" y="40"/>
-      <p2 x="1200" y="40"/>
-    </wire>
-    <wire>
-      <p1 x="1400" y="40"/>
-      <p2 x="1420" y="40"/>
     </wire>
     <wire>
       <p1 x="1300" y="-300"/>
