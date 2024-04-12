@@ -12,30 +12,30 @@ li a6, 2
 .minus:
 li t6, 0
 bne s1, t6, setjump(selectUI.plus, selectUI.minus + 1)
-li32 a7, 0x308B3A9A
-addi sp, sp, -1
+li32 a7, 0x9A3A8B30
+addi sp, sp, -4
 sw ra, sp, 0 ; selectUI関数のraを退避
 call setjump(plotSquareFlame, selectUI.plus - 3)
 lw ra, sp, 0 ; selectUI関数のraを復帰
-addi sp, sp, 1 ; spを復帰
+addi sp, sp, 4 ; spを復帰
 .plus:
 li t6, 1
 bne s1, t6, setjump(selectUI.start, selectUI.plus + 1)
-li32 a7, 0x8A8B949A
-addi sp, sp, -1
+li32 a7, 0x9A948B8A
+addi sp, sp, -4
 sw ra, sp, 0 ; selectUI関数のraを退避
 call setjump(plotSquareFlame, selectUI.start - 3)
 lw ra, sp, 0 ; selectUI関数のraを復帰
-addi sp, sp, 1 ; spを復帰
+addi sp, sp, 4 ; spを復帰
 .start:
 li t6, 2
 bne s1, t6, setjump(selectUI.return, selectUI.start + 1)
-li32 a7, 0xA88BCA9A
-addi sp, sp, -1
+li32 a7, 0x9ACA8BA8
+addi sp, sp, -4
 sw ra, sp, 0 ; selectUI関数のraを退避
 call setjump(plotSquareFlame, selectUI.return - 3)
 lw ra, sp, 0 ; selectUI関数のraを復帰
-addi sp, sp, 1 ; spを復帰
+addi sp, sp, 4 ; spを復帰
 .return:
 ret
 
@@ -56,33 +56,32 @@ mul t4, t4, t6
 li t5, 238
 sub t5, t5, t4 ; t5 = 238 - 6*numlen
 mv t6, a7
-srli t6, t6, 24 ; t6 = a7's x0
+li t4, 0xFF
+and t6, a7, t4 ; t6 = a7's x0
 bge t5, t6, setjump(plotcollatzexecute.plot, plotcollatzexecute.poschange - 1)
 .poschange:
 ; 改行操作
-li32 t6, 0x00FF0000 ; マスク用定数
+li32 t6, 0x0000FF00 ; マスク用定数
 and a7, a7, t6 ; y0のみ継承
-li32 t6, 0x01000000 ; x0 = 1
-add a7, a7, t6
-li32 t6, 0x010d0000
+liu t6, 0xd01
 add a7, a7, t6
 .plot:
 ; execute space描画
 li a3, 0
 li a5, ASCIICOLOR
-li a4, 79
-addi sp, sp, -1
+li a4, 193
+addi sp, sp, -4
 sw ra, sp, 0 ; plotcollatzexecute関数のraを退避
 call setjump(plotString, plotcollatzexecute.plot + 5)
 lw ra, sp, 0 ; plotcollatzexecute関数のraを復帰
-addi sp, sp, 1
+addi sp, sp, 4
 ; s2描画
 mv a4, s2
-addi sp, sp, -1
+addi sp, sp, -4
 sw ra, sp, 0 ; plotcollatzexecute関数のraを退避
 call setjump(plotDECu, plotcollatzexecute.plot + 11)
 lw ra, sp, 0 ; plotcollatzexecute関数のraを復帰
-addi sp, sp, 1
+addi sp, sp, 4
 
 ret
 
@@ -95,179 +94,179 @@ li s3, 0 ; ボタン押下記憶 (0 : 押下解除, 1 : 押下中)
 li s4, 0 ; エラーメッセージFSM
 
 li t0, 41 ; タイトル画面文字列アドレス指定
-li32 t1, "Coll"
+li32 t1, "lloC"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "atz "
+addi t0, t0, 4
+li32 t1, " zta"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "prob"
+addi t0, t0, 4
+li32 t1, "borp"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "lem "
+addi t0, t0, 4
+li32 t1, " mel"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "Simu"
+addi t0, t0, 4
+li32 t1, "umiS"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "lato"
+addi t0, t0, 4
+li32 t1, "otal"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "r\r\n\n"
+addi t0, t0, 4
+li32 t1, "\n\n\rr"
 sw t1, t0, 0
-addi t0, t0, 1
+addi t0, t0, 4
 li32 t1, "\n\n\n\n"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "-   "
+addi t0, t0, 4
+li32 t1, "   -"
 sw t1, t0, 0
-addi t0, t0, 1
+addi t0, t0, 4
 li32 t1, "    "
 sw t1, t0, 0
-addi t0, t0, 1
+addi t0, t0, 4
 li32 t1, "    "
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "   +"
+addi t0, t0, 4
+li32 t1, "+   "
 sw t1, t0, 0
-addi t0, t0, 1
+addi t0, t0, 4
 li32 t1, "    "
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "star"
+addi t0, t0, 4
+li32 t1, "rats"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "t\0\0\0"
+addi t0, t0, 4
+li32 t1, "\0\0\0t"
 sw t1, t0, 0
 
-li t0, 57 ; エラーメッセージ文字列アドレス指定
-li32 t1, "Vali"
+li t0, 105 ; エラーメッセージ文字列アドレス指定
+li32 t1, "ilaV"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "d ra"
+addi t0, t0, 4
+li32 t1, "ar d"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "nge "
+addi t0, t0, 4
+li32 t1, " egn"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "of v"
+addi t0, t0, 4
+li32 t1, "v fo"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "alue"
+addi t0, t0, 4
+li32 t1, "eula"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "s is"
+addi t0, t0, 4
+li32 t1, "si s"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "\r\nbe"
+addi t0, t0, 4
+li32 t1, "eb\n\r"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "twee"
+addi t0, t0, 4
+li32 t1, "eewt"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "n 1 "
+addi t0, t0, 4
+li32 t1, " 1 n"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "and "
+addi t0, t0, 4
+li32 t1, " dna"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "4294"
+addi t0, t0, 4
+li32 t1, "4924"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "9672"
+addi t0, t0, 4
+li32 t1, "2769"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "95\0\0"
+addi t0, t0, 4
+li32 t1, "\0\059"
 sw t1, t0, 0
 
-li t0, 70 ; Odd operation文字列アドレス指定
-li32 t1, "Odd "
+li t0, 157 ; Odd operation文字列アドレス指定
+li32 t1, " ddO"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "  : "
+addi t0, t0, 4
+li32 t1, " :  "
 sw t1, t0, 0
-addi t0, t0, 1
+addi t0, t0, 4
 li32 t1, "\0\0\0\0"
 sw t1, t0, 0
 
-li t0, 73 ; Even operation文字列アドレス指定
-li32 t1, "Even"
+li t0, 169 ; Even operation文字列アドレス指定
+li32 t1, "nevE"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "  : "
+addi t0, t0, 4
+li32 t1, " :  "
 sw t1, t0, 0
-addi t0, t0, 1
+addi t0, t0, 4
 li32 t1, "\0\0\0\0"
 sw t1, t0, 0
 
-li t0, 76 ; Total operation文字列アドレス指定
-li32 t1, "Tota"
+li t0, 181 ; Total operation文字列アドレス指定
+li32 t1, "atoT"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "l : "
+addi t0, t0, 4
+li32 t1, " : l"
 sw t1, t0, 0
-addi t0, t0, 1
+addi t0, t0, 4
 li32 t1, "\0\0\0\0"
 sw t1, t0, 0
 
-li t0, 79 ; execute space文字列アドレス指定
-li32 t1, " - \0"
+li t0, 193 ; execute space文字列アドレス指定
+li32 t1, "\0 - "
 sw t1, t0, 0
 
-li t0, 80 ; シミュレーション完了文字列アドレス指定
-li32 t1, "Comp"
+li t0, 197 ; シミュレーション完了文字列アドレス指定
+li32 t1, "pmoC"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "lete"
+addi t0, t0, 4
+li32 t1, "etel"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "d !!"
+addi t0, t0, 4
+li32 t1, "!! d"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "\r\nPr"
+addi t0, t0, 4
+li32 t1, "rP\n\r"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "ess "
+addi t0, t0, 4
+li32 t1, " sse"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "B to"
+addi t0, t0, 4
+li32 t1, "ot B"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, " go "
+addi t0, t0, 4
+li32 t1, " og "
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "back"
+addi t0, t0, 4
+li32 t1, "kcab"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, ".\0\0\0"
+addi t0, t0, 4
+li32 t1, "\0\0\0."
 sw t1, t0, 0
 
-li t0, 89 ; オーバーフローエラー文字列アドレス指定
-li32 t1, "Over"
+li t0, 233 ; オーバーフローエラー文字列アドレス指定
+li32 t1, "revO"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "flow"
+addi t0, t0, 4
+li32 t1, "wolf"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "ed !"
+addi t0, t0, 4
+li32 t1, "! de"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "!\r\nP"
+addi t0, t0, 4
+li32 t1, "P\n\r!"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "ress"
+addi t0, t0, 4
+li32 t1, "sser"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, " B t"
+addi t0, t0, 4
+li32 t1, "t B "
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "o go"
+addi t0, t0, 4
+li32 t1, "og o"
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, " bac"
+addi t0, t0, 4
+li32 t1, "cab "
 sw t1, t0, 0
-addi t0, t0, 1
-li32 t1, "k.\0\0"
+addi t0, t0, 4
+li32 t1, "\0\0.k"
 sw t1, t0, 0
 
 .rootloop:
@@ -278,11 +277,11 @@ bne s0, t0, setjump(main.simulating, main.rootloop + 1)
 li a3, 0
 li a5, ASCIICOLOR
 li a4, 41
-li32 a7, 0x33400000
+li32 a7, 0x4033
 call setjump(plotString, main.rootloop + 7)
 li a5, ASCIICOLOR
 mv a4, s2
-li32 a7, 0x3F8E0000
+li32 a7, 0x8E3F
 call setjump(plotDECu, main.rootloop + 12)
 li a5, selectUICOLOR
 call setjump(selectUI, main.title - 1)
@@ -296,7 +295,7 @@ beqz t0, setjump(main.title, main.movenothing)
 .dlterror:
 beqz s4, setjump(main.moveleft, main.dlterror) ; エラーメッセージを消去
 li a5, BACKCOLOR
-li32 a7, 0x10D0BEE6
+li32 a7, 0xE6BED010
 call setjump(plotRectangle, main.moveleft - 2)
 li s4, 0 ; エラーメッセージ消去判定
 .moveleft:
@@ -345,19 +344,19 @@ li t1, 1 ; シミュレーション数値が1の場合はエラーメッセー�
 bne s2, t1, setjump(main.confirm_minus_clear, main.confirm_minus + 3)
 li a3, 0
 li a5, WARNINGCOLOR
-li a4, 57
-li32 a7, 0x10D00000
+li a4, 105
+li32 a7, 0xD010
 call setjump(plotString, main.confirm_minus + 9)
 li s4, 1 ; エラーメッセージ生成判定
 j setjump(main.confirmed, main.confirm_minus_clear - 1)
 .confirm_minus_clear:
 li a5, BACKCOLOR ; 前回のシミュレーション数値フィールドを削除
-li32 a7, 0x3F8E7A99
+li32 a7, 0x997A8E3F
 call setjump(plotRectangle, main.confirm_minus_clear + 3)
 addi s2, s2, -1
 li a5, ASCIICOLOR ; シミュレーション数値フィールドを更新
 mv a4, s2
-li32 a7, 0x3F8E0000
+li32 a7, 0x8E3F
 call setjump(plotDECu, main.confirm_minus_clear + 9)
 j setjump(main.confirmed, main.confirm_minus_clear + 10)
 .confirm_plus:
@@ -367,19 +366,19 @@ li32 t1, 0xFFFFFFFF ; シミュレーション数値が2^32 - 1の場合はエ�
 bne s2, t1, setjump(main.confirm_plus_clear, main.confirm_plus + 4)
 li a3, 0
 li a5, WARNINGCOLOR
-li a4, 57
-li32 a7, 0x10D00000
+li a4, 105
+li32 a7, 0xD010
 call setjump(plotString, main.confirm_plus + 10)
 li s4, 1 ; エラーメッセージ生成判定
 j setjump(main.confirmed, main.confirm_plus_clear - 1)
 .confirm_plus_clear:
 li a5, BACKCOLOR ; 前回のシミュレーション数値フィールドを削除
-li32 a7, 0x3F8E7A99
+li32 a7, 0x997A8E3F
 call setjump(plotRectangle, main.confirm_plus_clear + 3)
 addi s2, s2, 1
 li a5, ASCIICOLOR ; シミュレーション数値フィールドを更新
 mv a4, s2
-li32 a7, 0x3F8E0000
+li32 a7, 0x8E3F
 call setjump(plotDECu, main.confirm_plus_clear + 9)
 j setjump(main.confirmed, main.confirm_plus_clear + 10)
 .confirmed:
@@ -403,44 +402,44 @@ li s6, 0 ; 偶数操作の回数
 li s7, 0 ; 操作の総数
 ; タイトル画面の消去
 li a5, BACKCOLOR
-li32 a7, 0x3340C94B
+li32 a7, 0x4BC94033
 call setjump(plotRectangle, main.simulating + 6)
-li32 a7, 0x308ACB9B
+li32 a7, 0x9BCB8A30
 call setjump(plotRectangle, main.simulating + 9)
 ; odd operationフィールドの描画
 li a3, 0
 li a5, ASCIICOLOR
-li a4, 70
-li32 a7, 0x01010000
+li a4, 157
+li32 a7, 0x0101
 call setjump(plotString, main.simulating + 15)
 mv a4, s5
 call setjump(plotDECu, main.simulating + 17)
 ; even operationフィールドの描画
 li a3, 0
-li a4, 73
-li32 a7, 0x010E0000
+li a4, 169
+li32 a7, 0x0E01
 call setjump(plotString, main.simulating + 22)
 mv a4, s6
 call setjump(plotDECu, main.simulating + 24)
 ; total operationフィールドの描画
 li a3, 0
-li a4, 76
-li32 a7, 0x011B0000
+li a4, 181
+li32 a7, 0x1B01
 call setjump(plotString, main.simulating + 29)
 mv a4, s7
 call setjump(plotDECu, main.simulating + 31)
 ; 横線の描画
-li32 a7, 0x0028FF28
+li32 a7, 0x28FF2800
 call setjump(plotRectangle, main.simulating + 34)
 ; シミュレーション数値の描画
 mv a4, s2
-li32 a7, 0x012A0000
+li32 a7, 0x2A01
 call setjump(plotDECu, main.simulating + 38)
 ; シミュレーション数値の退避
-li t0, 104
+li t0, 300
 sw s2, t0, 0
 ; executeposの退避
-li t0, 105
+li t0, 304
 sw a7, t0, 0
 .collatzloop:
 li t0, 1
@@ -448,8 +447,8 @@ bne s2, t0, setjump(main.collatzoperation, main.collatzloop + 1)
 ; 1になった時の処理
 ; completeの描画
 li a3, 0
-li a4, 80
-li32 a7, 0x810E0000
+li a4, 197
+li32 a7, 0x0E81
 call setjump(plotString, main.collatzloop + 6)
 j setjump(main.collatzfinish, main.collatzloop + 7)
 .collatzoperation:
@@ -464,38 +463,38 @@ addi s2, s2, 1 ; s2 = s2 + 1
 bgtu s2, t1, setjump(main.collatz_odd_clear, main.collatzoperation + 6)
 ; オーバーフローエラーの描画
 li a3, 0
-li a4, 89
-li32 a7, 0x810E0000
+li a4, 233
+li32 a7, 0x0E81
 call setjump(plotString, main.collatzoperation + 11)
 j setjump(main.collatzfinish, main.collatzoperation + 12)
 .collatz_odd_clear:
 ; executeposの復帰
-li t0, 105
+li t0, 304
 lw a7, t0, 0
 ; コラッツ操作の描画
 call setjump(plotcollatzexecute, main.collatz_odd_clear + 2)
 ; executeposの退避
-li t0, 105
+li t0, 304
 sw a7, t0, 0
 addi s5, s5, 1 ; 奇数操作回数をカウント
 ; oddフィールドの消去
 li a5, BACKCOLOR
-li32 a7, 0x31016D0C
+li32 a7, 0x0C6D0131
 call setjump(plotRectangle, main.collatz_odd_clear + 9)
 ; oddフィールドの更新
 li a5, ASCIICOLOR
 mv a4, s5
-li32 a7, 0x31010000
+li32 a7, 0x0131
 call setjump(plotDECu, main.collatz_odd_clear + 14)
 addi s7, s7, 1 ; 操作の総数をカウント
 ; totalフィールドの消去
 li a5, BACKCOLOR
-li32 a7, 0x311B6D26
+li32 a7, 0x266D1B31
 call setjump(plotRectangle, main.collatz_odd_clear + 19)
 ; totalフィールドの更新
 li a5, ASCIICOLOR
 mv a4, s7
-li32 a7, 0x311B0000
+li32 a7, 0x1B31
 call setjump(plotDECu, main.collatz_odd_clear + 24)
 
 .collatz_even:
@@ -503,32 +502,32 @@ call setjump(plotDECu, main.collatz_odd_clear + 24)
 ;           =>(右に1ビットシフトする)
 srli s2, s2, 1 ; s2 = s2 / 2
 ; executeposの復帰
-li t0, 105
+li t0, 304
 lw a7, t0, 0
 ; コラッツ操作の描画
 call setjump(plotcollatzexecute, main.collatz_even + 3)
 ; executeposの退避
-li t0, 105
+li t0, 304
 sw a7, t0, 0
 addi s6, s6, 1 ; 偶数操作回数をカウント
 ; evenフィールドの消去
 li a5, BACKCOLOR
-li32 a7, 0x310E6D19
+li32 a7, 0x196D0E31
 call setjump(plotRectangle, main.collatz_even + 10)
 ; evenフィールドの更新
 li a5, ASCIICOLOR
 mv a4, s6
-li32 a7, 0x310E0000
+li32 a7, 0x0E31
 call setjump(plotDECu, main.collatz_even + 15)
 addi s7, s7, 1 ; 操作の総数をカウント
 ; totalフィールドの消去
 li a5, BACKCOLOR
-li32 a7, 0x311B6D26
+li32 a7, 0x266D1B31
 call setjump(plotRectangle, main.collatz_even + 20)
 ; totalフィールドの更新
 li a5, ASCIICOLOR
 mv a4, s7
-li32 a7, 0x311B0000
+li32 a7, 0x1B31
 call setjump(plotDECu, main.collatz_even + 25)
 j setjump(main.collatzloop, main.collatz_even + 26)
 
@@ -539,10 +538,10 @@ li t1, GameC_B
 bne t0, t1, setjump(main.collatzfinish, main.collatzfinish + 4)
 ; 画面リセット
 li a5, BACKCOLOR
-li32 a7, 0x0000FFFF
+li32 a7, 0xFFFF0000
 call setjump(plotRectangle, main.collatzfinish + 8)
 ; シミュレーション数値の復帰
-li t0, 104
+li t0, 300
 lw s2, t0, 0
 li s0, 0 ; タイトル画面モードに遷移
 j setjump(main.rootloop, main.collatzfinish + 12)
